@@ -8,8 +8,7 @@ public class CodecFactory {
         if (type.equals("mp4")) {
             System.out.println("CodecFactory: extracting mpeg audio...");
             return new MPEG4CompressionCodec();
-        }
-        else {
+        } else {
             System.out.println("CodecFactory: extracting ogg audio...");
             return new OggCompressionCodec();
         }

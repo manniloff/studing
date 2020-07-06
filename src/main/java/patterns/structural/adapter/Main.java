@@ -5,6 +5,21 @@ import patterns.structural.adapter.round.RoundHole;
 import patterns.structural.adapter.round.RoundPeg;
 import patterns.structural.adapter.square.SquarePeg;
 
+/**
+ * Adapter pattern - позволяет объектам с несовместимыми интерфейсами работать вместе.
+ * <p>
+ * Паттерн можно часто встретить в Java-коде, особенно там, где требуется конвертация разных типов данных или совместная работа классов с разными интерфейсами.
+ * <p>
+ * Примеры Адаптеров в стандартных библиотеках Java:
+ * java.util.Arrays#asList()
+ * java.util.Collections#list()
+ * java.util.Collections#enumeration()
+ * java.io.InputStreamReader(InputStream) (возвращает объект Reader)
+ * java.io.OutputStreamWriter(OutputStream) (возвращает объект Writer)
+ * javax.xml.bind.annotation.adapters.XmlAdapter#marshal() и #unmarshal()
+ * <p>
+ * Этот простой пример показывает как с помощью паттерна Адаптер можно совмещать несовместимые вещи.
+ */
 public class Main {
     public static void main(String[] args) {
         // Круглое к круглому — всё работает.

@@ -16,12 +16,12 @@ public class Order {
         // Здесь мы могли бы забрать и сохранить платежные данные из стратегии.
     }
 
-    public void setTotalCost(int cost) {
-        this.totalCost += cost;
-    }
-
     public int getTotalCost() {
         return totalCost;
+    }
+
+    public void setTotalCost(int cost) {
+        this.totalCost += cost;
     }
 
     public boolean isClosed() {

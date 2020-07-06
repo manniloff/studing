@@ -10,6 +10,16 @@ import java.io.InputStreamReader;
 
 /**
  * Демо-класс. Здесь всё сводится воедино.
+ *
+ * Template method pattern - определяет скелет алгоритма, перекладывая ответственность за некоторые его шаги на подклассы.
+ * Паттерн позволяет подклассам переопределять шаги алгоритма, не меняя его общей структуры.
+ *
+ * Примеры Шаблонных методов в стандартных библиотеках Java:
+ * Все не-абстрактные методы классов java.io.InputStream, java.io.OutputStream, java.io.Reader и java.io.Writer.
+ * Все не-абстрактные методы классов java.util.AbstractList, java.util.AbstractSet и java.util.AbstractMap.
+ * javax.servlet.http.HttpServlet, все методы doXXX() по умолчанию возвращают HTTP-код 405 "Method Not Allowed". Однако вы можете переопределить их при желании.
+ *
+ * Социальные сети предоставляют собственные методы API для авторизации, постинга и выхода, но общий процесс для всех сетей совпадает.
  */
 public class Main {
     public static void main(String[] args) throws IOException {

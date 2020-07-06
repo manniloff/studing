@@ -5,11 +5,11 @@ import patterns.behavioral.state.tools.Tools;
 public class Canvas {
     private Tools currentTool;
 
-    public void mouseDown(){
+    public void mouseDown() {
         currentTool.mouseDown();
     }
 
-    public void mouseUp(){
+    public void mouseUp() {
         currentTool.mouseUp();
     }
 
