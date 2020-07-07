@@ -1,10 +1,43 @@
 package multithreading;
 
-public class Producer implements Runnable{
-    @Override
+import java.security.NoSuchAlgorithmException;
+
+/**
+ * Producer is a class which responsible about behavior of all
+ * threads of this class.
+ * <p>
+ * This class implements interface Runnable and realized method run
+ * which contain condition of running of thread
+ */
+
+public class Producer implements Runnable {
+    private Store store;
+    private EndProgram endProgram = new EndProgram();
+
+    Producer(Store store) {
+        this.store = store;
+    }
+
+    /**
+     * Describe behavior of producers threads
+     */
     public void run() {
-        do{
-            System.out.println("Was produced. In stock " +Stock.queue.size());
-        }while (true);
+        while (!Thread.currentThread().isInterrupted()) {
+            boolean endSignal = endProgram.getIsRunning();
+            if (!endSignal) {
+                Thread.currentThread().interrupt();
+            } else {
+
+                try {
+                    store.add();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    System.out.println("Throws an exception: "+e);
+                } catch (NoSuchAlgorithmException e) {
+                    System.out.println("Throws an exception: "+e);
+                }
+            }
+        }
     }
 }
+

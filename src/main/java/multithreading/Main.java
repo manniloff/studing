@@ -1,31 +1,42 @@
 package multithreading;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.security.NoSuchAlgorithmException;
 
+/**
+ * Class Main is responsible for start all needed classes
+ * <p>
+ * First of all it create instance of class InputData which start
+ * all responsible for read from keyboard methods
+ * <p>
+ * Second it create instance of class Store which generate an random
+ * Queue of object Car
+ * <p>
+ * Thirdly it create instance of class EndProgram which stop Producers
+ * when user tap button 'q" and finish executing of program
+ * <p>
+ * In the fourth starts all threads of consumers, producers and endOfProgram
+ */
 public class Main {
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void main(String[] args) throws IOException {
-        System.out.println("Insert number of producers\n");
-        Integer producers = Integer.parseInt(reader.readLine());
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 
-        System.out.println("insert number of consumers\n");
-        Integer consumers = Integer.parseInt(reader.readLine());
+        //Call and work with InputData
+        InputData inputData = new InputData();
 
-        for (int i = 0; i < producers; i++) {
-            Thread thread = new Thread(new Producer());
-            thread.setName("ConsumerThread" + i);
-            thread.start();
-        }
+        //Create store statement
+        Store store = new Store();
+        store.setQueue();
 
-        for (int i = 0; i < consumers; i++) {
-            Thread thread = new Thread(new Consumer());
-            thread.setName("ConsumerThread" + 1);
-            thread.start();
-        }
+        //Create EndProgram thread
+        EndProgram endProgram = new EndProgram();
 
-        System.out.println("Was started " + producers + " producers threads and " + consumers + " consumers threads");
+        //Start Consumers and Producers Threads
+        inputData.getConsumers().forEach(Thread::start);
+        inputData.getProducers().forEach(Thread::start);
+
+        //start end of program thread
+        Thread endOfProgram = new Thread(endProgram,"EndProgram");
+        endOfProgram.start();
+
     }
 }
